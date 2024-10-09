@@ -1,0 +1,30 @@
+name: Build and Deploy FastAPI to Railway
+
+on:
+  push:
+    branches:
+      - master
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Build Docker Image
+        run: |
+          docker build -t faroukdaboussi0/motion_detection:latest .
+
+      - name: Log in to Railway
+        env:
+          RAILWAY_API_KEY: ${{ secrets.RAILWAY_API_KEY }}  # Your Railway API key
+        run: |
+          curl -sSL https://railway.app/install.sh | sh
+          railway login --api-key $RAILWAY_API_KEY
+
+      - name: Deploy to Railway
+        run: |
+          railway up --docker
