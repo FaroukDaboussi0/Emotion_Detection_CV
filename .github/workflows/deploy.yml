@@ -1,9 +1,11 @@
-name: deploy
+name: Deploy
 
 on:
   push:
     branches:
-      - master
+      - master  # Change to your default branch if necessary
+
+jobs:
   build:
     runs-on: ubuntu-latest
 
