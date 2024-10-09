@@ -1,4 +1,4 @@
-name: Build and Deploy FastAPI to Railway
+name: deploy
 
 on:
   push:
