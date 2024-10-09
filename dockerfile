@@ -1,5 +1,5 @@
 # Use the official Python image from Docker Hub
-FROM python:3.9-slim
+FROM python:3.10-slim  
 
 # Set the working directory in the container
 WORKDIR /MOTION_DETECTION
