@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: Emotion_Detection_CV 
+    environment: Emotion_Detection_CV  
 
     steps:
       - name: Checkout code
@@ -25,17 +25,17 @@ jobs:
         run: |
           curl -sSL https://railway.app/install.sh | sh
 
-      - name: Print Railway API Key
+      - name: Print Railway Token
         env:
-          RAILWAY_API_KEY: ${{ secrets.RAILWAY_API_KEY }}
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         run: |
-          echo "RAILWAY_API_KEY is $RAILWAY_API_KEY"
+          echo "RAILWAY_TOKEN is $RAILWAY_TOKEN"
 
       - name: Log in to Railway
         env:
-          RAILWAY_API_KEY: ${{ secrets.RAILWAY_API_KEY }}  
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         run: |
-          echo $RAILWAY_API_KEY | railway login
+          railway login
 
       - name: Deploy to Railway
         run: |
