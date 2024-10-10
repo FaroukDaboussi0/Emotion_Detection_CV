@@ -24,13 +24,18 @@ jobs:
         run: |
           curl -sSL https://railway.app/install.sh | sh
 
+      - name: Print Railway API Key
+        env:
+          RAILWAY_API_KEY: ${{ secrets.RAILWAY_API_KEY }}
+        run: |
+          echo "RAILWAY_API_KEY is $RAILWAY_API_KEY"
+
       - name: Log in to Railway
         env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_API_KEY }}  
+          RAILWAY_API_KEY: ${{ secrets.RAILWAY_API_KEY }}  
         run: |
-          railway login --token $RAILWAY_TOKEN
+          echo $RAILWAY_API_KEY | railway login
 
       - name: Deploy to Railway
         run: |
           railway up --docker
-
