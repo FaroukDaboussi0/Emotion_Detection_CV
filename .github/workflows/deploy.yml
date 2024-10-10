@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-      - master  # Change to your default branch if necessary
+      - master  
 
 jobs:
   build:
@@ -26,10 +26,12 @@ jobs:
 
       - name: Log in to Railway
         env:
-          RAILWAY_API_KEY: ${{ secrets.RAILWAY_API_KEY }}  
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_API_KEY }}  
         run: |
-          echo $RAILWAY_API_KEY | railway login
+          railway login --token $RAILWAY_TOKEN
 
       - name: Deploy to Railway
         run: |
           railway up --docker
+
+RAILWAY_API_KEY
