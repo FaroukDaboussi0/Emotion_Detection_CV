@@ -1,6 +1,10 @@
 # Use the official Python image from Docker Hub
 FROM python:3.10-slim  
 
+# Set environment variables to disable GPU and oneDNN optimizations
+ENV CUDA_VISIBLE_DEVICES=""
+ENV TF_ENABLE_ONEDNN_OPTS=0
+
 # Set the working directory in the container
 WORKDIR /MOTION_DETECTION
 
