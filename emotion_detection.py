@@ -16,4 +16,5 @@ async def classify_emotion(file: UploadFile = File(...)):
     # Classify the image and get the emotion
     results = pipe(image)
 
+
     return results
