@@ -34,4 +34,3 @@ jobs:
         run: |
           railway up --docker
 
-RAILWAY_API_KEY
